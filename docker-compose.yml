@@ -1,0 +1,36 @@
+version: "3"
+services:
+  postgres:
+    image: postgres:14
+    environment:
+      POSTGRES_PASSWORD: localpassword
+      POSTGRES_DB: nakama
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      interval: 3s
+      timeout: 3s
+      retries: 5
+
+  nakama:
+    image: heroiclabs/nakama:3.21.1
+    entrypoint:
+      - "/bin/sh"
+      - "-ecx"
+      - >
+        /nakama/nakama migrate up
+        --database.address postgres://postgres:localpassword@postgres:5432/nakama &&
+        exec /nakama/nakama
+        --name nakama1
+        --database.address postgres://postgres:localpassword@postgres:5432/nakama
+        --socket.server_key "defaultkey"
+        --runtime.path /nakama/data/modules
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "7349:7349"
+      - "7350:7350"
+      - "7351:7351"
+    volumes:
+      - ./modules:/nakama/data/modules
+      
