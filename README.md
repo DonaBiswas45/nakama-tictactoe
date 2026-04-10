@@ -38,6 +38,9 @@ nakama | {"msg":"Found runtime modules","count":1}
 Nakama console available at: http://localhost:7351
 Login: admin / password
 3. Start the frontend
+
+API Configuration
+ParameterValueServer KeydefaultkeyHTTP Port7350WebSocket Port7350Console Port7351Matchmaker min/max2 / 2Leaderboard IDtictactoe_wins
 bashcd frontend
 npm install
 npm start
