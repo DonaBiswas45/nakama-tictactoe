@@ -15,7 +15,3 @@ socket:
 
 runtime:
   path: "/nakama/data/modules"
-
-database:
-  address:
-    - "${DATABASE_URL}"
