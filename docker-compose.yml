@@ -1,10 +1,9 @@
-version: "3"
 services:
   postgres:
     image: postgres:14
     environment:
-      POSTGRES_PASSWORD: localpassword
-      POSTGRES_DB: nakama
+      - POSTGRES_PASSWORD=localpassword
+      - POSTGRES_DB=nakama
     healthcheck:
       test: ["CMD", "pg_isready", "-U", "postgres"]
       interval: 3s
@@ -20,10 +19,8 @@ services:
         /nakama/nakama migrate up
         --database.address postgres://postgres:localpassword@postgres:5432/nakama &&
         exec /nakama/nakama
-        --name nakama1
+        --config /nakama/data/config.yml
         --database.address postgres://postgres:localpassword@postgres:5432/nakama
-        --socket.server_key "defaultkey"
-        --runtime.path /nakama/data/modules
     depends_on:
       postgres:
         condition: service_healthy
@@ -33,4 +30,4 @@ services:
       - "7351:7351"
     volumes:
       - ./modules:/nakama/data/modules
-      
+      - ./nakama-config.yml:/nakama/data/config.yml

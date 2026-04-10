@@ -1,0 +1,17 @@
+console:
+  username: "admin"
+  password: "password"
+
+session:
+  encryption_key: "defaultencryptionkey"
+  refresh_encryption_key: "defaultrefreshencryptionkey"
+
+socket:
+  server_key: "defaultkey"
+  response_headers:
+    - "Access-Control-Allow-Origin=*"
+    - "Access-Control-Allow-Headers=Authorization,Content-Type,Accept"
+    - "Access-Control-Allow-Methods=GET,POST,PUT,DELETE,OPTIONS"
+
+runtime:
+  path: "/nakama/data/modules"
