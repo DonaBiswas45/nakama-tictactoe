@@ -88,7 +88,31 @@ CMD ["/nakama/nakama migrate up --database.address \"$DATABASE_URL\" && exec /na
 | Leaderboard ID | `tictactoe_wins` |
 
 ---
+## Local Development
 
+### Prerequisites
+- Docker and Docker Compose
+- Node.js 18+
+
+### 1. Clone the repo
+```bash
+git clone https://github.com/DonaBiswas45/nakama-tictactoe
+cd nakama-tictactoe
+```
+
+### 2. Start Nakama
+```bash
+docker-compose up
+```
+Wait for: `{"msg":"Tictactoe module loaded!"}`
+
+### 3. Start frontend
+```bash
+cd frontend
+npm install
+npm start
+```
+Open `http://localhost:3000` in two tabs to test multiplayer.
 ## How to Test Multiplayer
 
 1. Open https://nakama-tictactoe-eight.vercel.app in two different browser tabs (or two different devices)
