@@ -56,8 +56,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 24px 16px;
+  padding: 16px;
   gap: 16px;
+  min-height: calc(100vh - 56px);
 }
 .screen.center {
   display: flex;
@@ -110,7 +111,19 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .username { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 700; margin-bottom: 4px; }
 
 /* ── Searching ── */
-.searching-card { text-align: center; }
+.searching-card {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.searching-card .btn {
+  max-width: 200px;
+}
 .pulse-dot {
   position: relative;
   width: 68px; height: 68px; border-radius: 50%;
