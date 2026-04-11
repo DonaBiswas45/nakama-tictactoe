@@ -224,7 +224,7 @@ const handleShowLeaderboard = useCallback(async () => {
                 disabled={!isMyTurn || cell !== '' || !!gameState.winner}
               >
                 {cell === 'X' && <span className="cell-mark x">✕</span>}
-                {cell === 'O' && <span className="cell-mark o">○</span>}
+                {cell === 'O' && <span className="cell-mark o">O</span>}
               </button>
             ))}
           </div>
@@ -249,15 +249,6 @@ const handleShowLeaderboard = useCallback(async () => {
             <h2 className="result-title">{getResultMessage()}</h2>
             {gameState.forfeit && <p className="muted">Opponent disconnected</p>}
 
-            {/* Final board (read-only) */}
-            <div className="board board-small">
-              {gameState.board.map((cell, i) => (
-                <div key={i} className={`cell cell-static ${cell === 'X' ? 'cell-x' : cell === 'O' ? 'cell-o' : ''}`}>
-                  {cell === 'X' && <span className="cell-mark x">✕</span>}
-                  {cell === 'O' && <span className="cell-mark o">○</span>}
-                </div>
-              ))}
-            </div>
 
             <div className="result-actions">
               <button className="btn primary" onClick={handleFindMatch}>Play Again</button>
