@@ -154,14 +154,19 @@ const handleShowLeaderboard = useCallback(async () => {
     <div className="app">
       {/* Header */}
       <header className="header">
-        <div className="header-logo">✕ ○</div>
+        <div className="header-logo">X  O</div>
         <h1 className="header-title">Tic-Tac-Toe</h1>
         <button className="btn-icon" onClick={handleShowLeaderboard} title="Leaderboard">🏆</button>
       </header>
 
-      {/* Error banner */}
-      {error && <div className="error-banner">{error} <button onClick={() => setError('')}>✕</button></div>}
-
+      {error && (
+  <div className="error-banner">
+    <span style={{overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', flex: 1}}>
+      {error}
+    </span>
+    <button onClick={() => setError('')}>✕</button>
+  </div>
+)}
       {/* ── LOBBY ── */}
       {view === VIEWS.LOBBY && (
         <div className="screen center">
